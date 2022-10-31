@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react'
 import Navbar from './Navbar'
 import { useNavigate } from 'react-router-dom'
+import Infostudent from './Infostudent'
 function Home() {
   const navigate = useNavigate()
 
@@ -14,7 +15,7 @@ useEffect(()=>{
     <div>
     
       <Navbar/>
-<h1>Hii home</h1>
+      <Infostudent/>
     </div>
   )
 }

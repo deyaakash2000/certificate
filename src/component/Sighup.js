@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import Navbar from './Navbar'
+import  '../css/login.css'
+import img from '../img/login.jpg'
 
 function Sighup(props) {
   const [credentials,setcredentials] = useState({email:"",password:""})
@@ -8,7 +10,7 @@ function Sighup(props) {
 
     const handleSubmit=  async (e)=>{
         e.preventDefault()
-        const response = await fetch("http://localhost:50001/api/auth/login", {
+        const response = await fetch("http://localhost:5000/api/auth/login", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -33,17 +35,21 @@ function Sighup(props) {
 
        <div>
         <Navbar/>
-        <form onSubmit={handleSubmit}>
-        <div className="mb-3 my-3">
-        <label htmlFor="email" className="form-label">Email</label>
-        <input type="text" className="form-control" id="email" name="email"  value={credentials.email} onChange={onChange} minLength={5} required />
-      </div>
-      <div className="mb-3 my-3">
-        <label htmlFor="password" className="form-label">Password</label>
-        <input type="password" className="form-control" id="password" name="password" value={credentials.password}onChange={onChange} minLength={5} required/>
-      </div>
-      <button type="submit" className='btn btn-primary'>Submit</button>
-        </form>
+  
+        <div className="containers">
+        <div class="imgcontainer">
+      
+      <img src={img} alt="Avatar" class="src"/>
+    </div>
+        <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter email" id="email" name="email"  value={credentials.email} onChange={onChange} minLength={5} required/>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" id="password" name="password" value={credentials.password}onChange={onChange} minLength={5} required/>
+        
+      <button type="submit" className="w-100" onClick={handleSubmit}>Login</button><br/>
+
+        </div>
        </div>
        
   

@@ -3,6 +3,7 @@ import './App.css';
 import Home from './component/Home'
 import Sighup from './component/Sighup'
 // import Signin from './component/Signin'
+import NoteState from './contex/userdetails/NoteState';
 import {
   BrowserRouter,
   Routes,
@@ -11,7 +12,8 @@ import {
 function App() {
   return (
     <div className="App">
-  {/* <Alert message={"this is alert"}/> */}
+      <>
+    <NoteState>
     <BrowserRouter>
     <Routes>
       <Route exact path="/home" element={<Home/>}/>
@@ -19,6 +21,8 @@ function App() {
       {/* <Route exact path="/signin" element={<Signin/>}/> */}
     </Routes>
   </BrowserRouter>
+  </NoteState>
+  </>
     </div>
   );
 }
