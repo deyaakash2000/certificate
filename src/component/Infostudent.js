@@ -1,14 +1,18 @@
-import React,{useState,useContext} from 'react'
+import React,{useState,useContext,useEffect} from 'react'
 import noteContext from '../contex/userdetails/noteContex'
+import Notesiteam from '../component/Notesiteam'
 export default function Infostudent() {
     const noteDetails = useContext(noteContext)
-    const {addetails} = noteDetails //Destructuring
+    const {addetails,fetchNotes,notes} = noteDetails //Destructuring
     const [addInfo,setInfo]=useState({
         title:"",
         email :"",
         department:"",
         roll :""
     })
+   useEffect(()=>{
+    fetchNotes()
+   })
     const infoHandel=(e)=>{
         setInfo({...addInfo,[e.target.name]:e.target.value})
     }
@@ -35,6 +39,17 @@ export default function Infostudent() {
                 <label htmlFor="roll" className="form-label">University Roll :</label>
                 <input type="text" className="form-control" id="roll" placeholder="University Roll"  name='roll' value={addInfo.roll} onChange={infoHandel} minLength={5} required/>
                 <button type="button" className="btn btn-primary" onClick={handelClick}>Submit</button>
+            </div>
+            <div className='row my-3'>
+                <h1>Details</h1>
+               {
+                notes.map((iteam)=>{
+                    return (
+                        <Notesiteam iteam={iteam}/>
+                    )
+                      
+                })
+               }
             </div>
         </>
     )

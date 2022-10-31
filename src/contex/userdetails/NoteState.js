@@ -5,7 +5,7 @@ const NoteState=(props)=> {
     const notesInitial = [];
     const [notes, setnotes] = useState(notesInitial);
     const addetails = async (title, email, department,roll) => {
-        const response = await fetch(`http://localhost:5000/api/user/adduserdetails`, {
+        const response = await fetch(`http://localhost:50001/api/user/adduserdetails`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -17,9 +17,23 @@ const NoteState=(props)=> {
         setnotes(notes.concat(note));
       };
 
+      const fetchNotes = async () => {
+        const response = await fetch(`http://localhost:50001/api/user/allinfo`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem('token')
+              
+          },
+        });
+        const json = await response.json();
+        setnotes(json);
+      };
+    
+
   return (
     <div>
-      <NoteContext.Provider value={{ notes, addetails }}>
+      <NoteContext.Provider value={{ notes, addetails,fetchNotes }}>
         {props.children}
       </NoteContext.Provider>
     </div>
