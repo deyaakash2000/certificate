@@ -1,7 +1,10 @@
-import React from 'react'
-
+import React,{useContext} from 'react'
+import noteContext from '../contex/userdetails/noteContex'
 export default function Notesiteam(props) {
+    const noteDetails = useContext(noteContext)
+    const {deleteNote}=noteDetails
     const { iteam } = props
+    
     return (
         <div>
             <div>
@@ -15,6 +18,7 @@ export default function Notesiteam(props) {
                             <div className="card-footer text-muted">
                                 {iteam.date}
                             </div>
+                            <i className="fa-solid fa-trash mx-3 icone "onClick={()=>(deleteNote(iteam._id))}></i>
                         </div>
                     </div>
                 </div>

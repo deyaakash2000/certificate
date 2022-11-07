@@ -30,10 +30,24 @@ const NoteState=(props)=> {
         setnotes(json);
       };
     
-
+      const deleteNote = async (id) => {
+        const response = await fetch(`http://localhost:50001/api/user/deletenotes/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem('token')
+              
+          },
+        });
+          await response.json()
+        const NewNode = notes.filter((note) => {
+          return note._id !== id;
+        });
+        setnotes(NewNode);
+      };
   return (
     <div>
-      <NoteContext.Provider value={{ notes, addetails,fetchNotes }}>
+      <NoteContext.Provider value={{ notes, addetails,fetchNotes,deleteNote }}>
         {props.children}
       </NoteContext.Provider>
     </div>
