@@ -21,9 +21,10 @@ export default function Infostudent() {
             title:"",
             email:"",
             department:"",
-            roll :""
+            roll :"",
+            year :""
           })
-          addetails(addInfo.title,addInfo.email,addInfo.department,addInfo.roll)
+          addetails(addInfo.title,addInfo.email,addInfo.department,addInfo.roll,addInfo.year)
          
     }
     return (
@@ -38,7 +39,9 @@ export default function Infostudent() {
                 <input type="text" className="form-control" id="department" placeholder="Department"  name='department' value={addInfo.department} onChange={infoHandel} minLength={5} required/>
                 <label htmlFor="roll" className="form-label">University Roll :</label>
                 <input type="text" className="form-control" id="roll" placeholder="University Roll"  name='roll' value={addInfo.roll} onChange={infoHandel} minLength={5} required/>
-                <button type="button" className="btn btn-primary" onClick={handelClick}>Submit</button>
+                <label htmlFor="roll" className="form-label">Year :</label>
+                <input type="number" className="form-control" id="year" placeholder="year"  name='year' value={addInfo.year} onChange={infoHandel} minLength={5} required/>
+                <button type="button" disabled={addInfo.email.length <=5 ? addInfo.department.length <=2:""} className="btn btn-primary" onClick={handelClick}>Submit</button>
             </div>
             <div className='row my-3'>
                 <h1>Details</h1>

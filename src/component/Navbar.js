@@ -19,6 +19,9 @@ function Navbar() {
         <li className="nav-item">
           <NavLink to='/home' className="nav-link active" aria-current="page">Home</NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink to='/studentinfo' className="nav-link active" aria-current="page">Student</NavLink>
+        </li>
       </ul>
      {!localStorage.getItem('token')?<form className="d-flex">
       <NavLink to='/' className=" btn btn-outline-successaria-current">sign up </NavLink>

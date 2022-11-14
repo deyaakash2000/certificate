@@ -4,6 +4,7 @@ import Home from './component/Home'
 import Sighup from './component/Sighup'
 // import Signin from './component/Signin'
 import NoteState from './contex/userdetails/NoteState';
+ import StudentCertificate from './component/Studentcertificate'
 import {
   BrowserRouter,
   Routes,
@@ -18,6 +19,8 @@ function App() {
     <Routes>
       <Route exact path="/home" element={<Home/>}/>
       <Route exact path="/" element={<Sighup/>}/>
+      <Route exact path="/studentinfo" element={<StudentCertificate/>}/>
+     
       {/* <Route exact path="/signin" element={<Signin/>}/> */}
     </Routes>
   </BrowserRouter>
